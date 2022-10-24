@@ -1,0 +1,127 @@
+body {
+  background: #F2F2F2;
+  font: 300 16px "Libre Franklin", sans-serif;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.field-select {
+  height: auto;
+  position: relative;
+  width: 100%;
+
+  &:before {
+    border-color: #CCCCCC;
+    border-radius: 1px;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    cursor: pointer;
+    content: "";
+    height: 7px;
+    position: absolute;
+    right: 18px;
+    top: 35%;
+    transform: rotate(45deg);
+    transition: 0.2s all ease;
+    width: 7px;
+    z-index: 10;
+  }
+
+  &:focus-within:before {
+    // focus div e hijos para el before
+    border-color: #000;
+  }
+
+  &__input {
+    border: 1px solid #A6A6A6;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    height: 36px;
+    padding: 0;
+    text-indent: 10px;
+    width: calc(100% - 2px); // 2 diferencia bordes
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #000;
+    }
+  }
+
+  &__list-ctn {
+    margin-top: 10px;
+    max-height: calc(5 * 30px); // 5 = cantidad de opciones
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &__list {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__opt,
+  &__no-opt {
+    line-height: 30px;
+    list-style: none;
+    text-indent: 10px;
+  }
+
+  &__opt:hover {
+    background-color: #F7C1AE;
+  }
+
+  &__no-opt {
+    color: #CCCCCC;
+    text-indent: 0;
+    text-align: center;
+  }
+
+  [value="true"] {
+    // item que tenga atributo con el value true (selected)
+    background-color: #F68E01;
+    color: #FFFFFF;
+  }
+
+  @media (min-width: 768px) {
+    &:before {
+      top: 40%;
+    }
+
+    &__dropdown {
+      height: 50px;
+    }
+
+    &__input {
+      height: 48px;
+      font-size: 18px;
+    }
+
+    &__list-ctn {
+      max-height: calc(5 * 40px); // 5 = cantidad de opciones
+    }
+
+    &__opt,
+    &__no-opt {
+      line-height: 40px;
+    }
+  }
+}
